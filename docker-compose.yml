@@ -1,0 +1,21 @@
+analysis:
+  build: https://github.com/haw-mip02/analysis-service.git
+database:
+  build: https://github.com/haw-mip02/analysis-database.git
+  environment:
+    MONGODB_USER: "analysis"
+    MONGODB_DATABASE: "analysis"
+    MONGODB_PASS: "${MONGODB_PASS}"
+  volumes:
+    - ./db:/data/db
+  ports:
+    - "27017:27017"
+    - "28017:28017"
+rest:
+  build: https://github.com/haw-mip02/analysis-rest.git
+  environment:
+    MONGODB_PASS: "${MONGODB_PASS}"
+  ports:
+    - "5000:5000"
+  links:
+    - database:mongodb
