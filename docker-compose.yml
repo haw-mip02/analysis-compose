@@ -13,6 +13,10 @@ database:
   ports:
     - "27017:27017"
     - "28017:28017"
+cache:
+  build: https://github.com/haw-mip02/analysis-cache.git
+  ports:
+    - "6379:6379"
 rest:
   build: https://github.com/haw-mip02/analysis-rest.git
   environment:
@@ -21,3 +25,4 @@ rest:
     - "5000:5000"
   links:
     - database:mongodb
+    - cache:redis
