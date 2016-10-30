@@ -1,5 +1,7 @@
-analysis:
-  build: https://github.com/haw-mip02/analysis-service.git
+preprocess:
+  build: https://github.com/haw-mip02/analysis-preprocess.git
+  links:
+    - database:mongodb
 database:
   build: https://github.com/haw-mip02/analysis-database.git
   environment:
